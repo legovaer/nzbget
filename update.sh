@@ -32,5 +32,6 @@ else
     [[ -z ${version} ]] && exit 1
     echo "VERSION=${version}" > VERSION
     echo "VERSION_SHORT=${version//-testing/}" >> VERSION
+    echo '{"version":"'"${version//-testing/}"'"}' > VERSION.json
     echo "##[set-output name=version;]${version//-testing/}"
 fi
