@@ -30,6 +30,8 @@ elif [[ ${1} == "screenshot" ]]; then
 else
     version=$(curl -u "${GITHUB_ACTOR}:${GITHUB_TOKEN}" -fsSL "https://api.github.com/repos/nzbget/nzbget/releases" | jq -r .[0].name | sed s/v//g)
     [[ -z ${version} ]] && exit 1
-    echo '{"version":"'"${version}"'","version_short":"'"${version//-testing/}"'"}' | jq . > VERSION.json
-    echo "##[set-output name=version;]${version//-testing/}"
+    old_version=$(jq -r '.version_short' < VERSION.json)
+    changelog=$(jq -r '.changelog' < VERSION.json)
+    [[ "${old_version}" != "${version//-testing/}" ]] && changelog="https://github.com/nzbget/nzbget/compare/v${old_version}...v${version//-testing/}"
+    echo '{"version":"'"${version}"'","version_short":"'"${version//-testing/}"'","changelog":"'"${changelog}"'"}' | jq . > VERSION.json
 fi
