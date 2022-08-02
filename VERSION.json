@@ -1,5 +1,5 @@
 {
-  "version": "21.2-testing-r2333",
-  "version_short": "21.2-r2333",
-  "changelog": "https://github.com/nzbget/nzbget/compare/v21.1...v21.2-r2333"
+  "version": "21.1",
+  "version_short": "21.1",
+  "changelog": "https://github.com/nzbget/nzbget/compare/v21.2-r2333...v21.1"
 }
