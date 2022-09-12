@@ -32,5 +32,6 @@ else
     old_version=$(jq -r '.version_short' < VERSION.json)
     changelog=$(jq -r '.changelog' < VERSION.json)
     [[ "${old_version}" != "${version//-testing/}" ]] && changelog="https://github.com/nzbget/nzbget/compare/v${old_version}...v${version//-testing/}"
-    echo '{"version":"'"${version}"'","version_short":"'"${version//-testing/}"'","changelog":"'"${changelog}"'"}' | jq . > VERSION.json
+    version_json=$(cat ./VERSION.json)
+    jq '.version = "'"${version}"'" | .version_short = "'"${version//-testing/}"'" | .changelog = "'"${changelog}"'"' <<< "${version_json}" > VERSION.json
 fi
