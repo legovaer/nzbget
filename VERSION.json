@@ -1,5 +1,7 @@
 {
   "version": "21.2-testing-r2333",
   "version_short": "21.2-r2333",
-  "changelog": "https://github.com/nzbget/nzbget/compare/v21.1...v21.2-r2333"
+  "changelog": "https://github.com/nzbget/nzbget/compare/v21.1...v21.2-r2333",
+  "upstream_image": "cr.hotio.dev/hotio/base",
+  "upstream_tag": "alpine"
 }
